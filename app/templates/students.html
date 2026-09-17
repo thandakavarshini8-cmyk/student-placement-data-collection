@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Student Dataset</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div>
+        <h1>Collected Student Dataset</h1>
+        <p>Module 1 • Placement Prediction & Analysis</p>
+    </div>
+
+    <nav>
+        <a href="/">Add Student</a>
+        <a href="/export">Export CSV</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+<section class="panel">
+
+    <h2>Collected Records: {{ students|length }}</h2>
+
+    <p class="note">
+        Student records collected through the 32-attribute data collection form.
+    </p>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Student ID</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Branch</th>
+                    <th>Year</th>
+
+                    <th>CGPA</th>
+                    <th>10th %</th>
+                    <th>12th %</th>
+                    <th>Backlogs</th>
+                    <th>Attendance</th>
+
+                    <th>Internships</th>
+                    <th>Projects</th>
+                    <th>Certifications</th>
+
+                    <th>Coding Skill</th>
+                    <th>Aptitude</th>
+                    <th>Communication</th>
+                    <th>Technical Skill</th>
+
+                    <th>Hackathons</th>
+                    <th>Extracurricular</th>
+
+                    <th>Placement Training</th>
+                    <th>Mock Interview</th>
+                    <th>Resume Score</th>
+
+                    <th>Teamwork</th>
+                    <th>Leadership</th>
+                    <th>Problem Solving</th>
+                    <th>Logical Reasoning</th>
+                    <th>Analytical Skill</th>
+
+                    <th>Technical Training</th>
+                    <th>Work Experience</th>
+                    <th>Career Guidance</th>
+
+                    <th>Placement Status</th>
+                    <th>Salary LPA</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for s in students %}
+
+                <tr>
+
+                    <td>{{ s.student_id }}</td>
+                    <td>{{ s.age }}</td>
+                    <td>{{ s.gender }}</td>
+                    <td>{{ s.branch }}</td>
+                    <td>{{ s.year }}</td>
+
+                    <td>{{ s.cgpa }}</td>
+                    <td>{{ s.tenth_percentage }}</td>
+                    <td>{{ s.twelfth_percentage }}</td>
+                    <td>{{ s.backlogs }}</td>
+                    <td>{{ s.attendance }}</td>
+
+                    <td>{{ s.internships }}</td>
+                    <td>{{ s.projects }}</td>
+                    <td>{{ s.certifications }}</td>
+
+                    <td>{{ s.coding_skill }}</td>
+                    <td>{{ s.aptitude_score }}</td>
+                    <td>{{ s.communication_skill }}</td>
+                    <td>{{ s.technical_skill }}</td>
+
+                    <td>{{ s.hackathons }}</td>
+                    <td>{{ s.extracurricular_activities }}</td>
+
+                    <td>{{ s.placement_training }}</td>
+                    <td>{{ s.mock_interview_score }}</td>
+                    <td>{{ s.resume_score }}</td>
+
+                    <td>{{ s.teamwork_skill }}</td>
+                    <td>{{ s.leadership_skill }}</td>
+                    <td>{{ s.problem_solving_skill }}</td>
+                    <td>{{ s.logical_reasoning_score }}</td>
+                    <td>{{ s.analytical_skill }}</td>
+
+                    <td>{{ s.technical_training }}</td>
+                    <td>{{ s.work_experience }}</td>
+                    <td>{{ s.career_guidance }}</td>
+
+                    <td>{{ s.placement_status }}</td>
+                    <td>{{ s.salary_package or '-' }}</td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+                    <td colspan="32">
+                        No student records collected yet.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</main>
+
+</body>
+</html>
