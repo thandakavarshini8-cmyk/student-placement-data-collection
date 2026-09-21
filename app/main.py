@@ -58,13 +58,12 @@ def home(request: Request):
     conn = get_connection()
 
     total = conn.execute(
-        "SELECT COUNT(*) FROM students"
-    ).fetchone()[0]
+    "SELECT COUNT(*) AS count FROM students"
+).fetchone()["count"]
 
-    placed = conn.execute(
-        "SELECT COUNT(*) FROM students WHERE placement_status = 'Placed'"
-    ).fetchone()[0]
-
+placed = conn.execute(
+    "SELECT COUNT(*) AS count FROM students WHERE placement_status = 'Placed'"
+).fetchone()["count"]
     not_placed = total - placed
 
     conn.close()
