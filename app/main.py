@@ -84,7 +84,7 @@ def home(request: Request):
             "placed": placed,
             "not_placed": not_placed
         }
-    s)
+    )
 
 
 # ---------------------------------------------------------
