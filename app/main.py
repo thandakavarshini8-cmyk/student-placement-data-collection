@@ -57,13 +57,21 @@ def home(request: Request):
 
     conn = get_connection()
 
-    total = conn.execute(
-    "SELECT COUNT(*) AS count FROM students"
-).fetchone()["count"]
+    total_row = conn.execute(
+        "SELECT COUNT(*) AS count FROM students"
+    ).fetchone()
 
-placed = conn.execute(
-    "SELECT COUNT(*) AS count FROM students WHERE placement_status = 'Placed'"
-).fetchone()["count"]
+    placed_row = conn.execute(
+        "SELECT COUNT(*) AS count FROM students WHERE placement_status = 'Placed'"
+    ).fetchone()
+
+    if isinstance(total_row, dict):
+        total = total_row["count"]
+        placed = placed_row["count"]
+    else:
+        total = total_row[0]
+        placed = placed_row[0]
+
     not_placed = total - placed
 
     conn.close()
@@ -76,7 +84,7 @@ placed = conn.execute(
             "placed": placed,
             "not_placed": not_placed
         }
-    )
+    s)
 
 
 # ---------------------------------------------------------
